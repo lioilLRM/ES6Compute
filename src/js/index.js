@@ -1,7 +1,21 @@
 console.log('首页测试')
 import {compute, newCompute} from '../utils/compute.js'
 import {digitalization, trimSpace} from '../utils/tools'
+import Caculator from '../module/Caculator'
 ;(function(doc){
+
+  const app = doc.getElementsByClassName('Jcaculator')[0]
+  let caculator = new Caculator(app)
+  caculator.init()
+  console.log('caculator', caculator);
+  
+
+}(document))
+
+
+;(function(doc){
+  // 下面是普通的写法
+  return
   const oDiv = doc.getElementsByClassName('Jcaculator')[0],
     fInput = doc.getElementsByTagName('input')[0],
     sInput = doc.getElementsByTagName('input')[1],
