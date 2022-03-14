@@ -22,7 +22,48 @@ class Caculator{
       fValue: '',
       sValue: ''
     }
+    
+    // this._data = this.defineData()
+
     this.selectedBtnIndex = 0
+  }
+
+  defineData() {
+    let _obj = {},
+      method = 'plus',
+      fValue = 0,
+      sValue = 0;
+    const that = this;
+    Object.defineProperties(_obj, {
+      method: {
+        get() {
+          return method;
+        },
+        set(nval) {
+          method = nval;
+          that.setResult(that._data.method, that._data.fValue, that._data.sValue)
+        }
+      },
+      fValue: {
+        get() {
+          return fValue;
+        },
+        set(nval) {
+          fValue = nval;
+          that.setResult(that._data.method, that._data.fValue, that._data.sValue)
+        }
+      },
+      sValue: {
+        get() {
+          return sValue;
+        },
+        set(nval) {
+          sValue = nval;
+          that.setResult(that._data.method, that._data.fValue, that._data.sValue)
+        }
+      }
+    })
+      return _obj
   }
 
   init() {
