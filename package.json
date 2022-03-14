@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.js --color --progress",
-   "webpack": "webpack"
+   "webpack": "webpack",
+   "deploy": "deploy.sh"
   },
   "author": "",
   "license": "ISC",
