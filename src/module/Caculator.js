@@ -17,13 +17,13 @@ class Caculator{
     this.BtnGroupComponent = new BtnGroupComponent()
     this.ResultCompoent = new ResultCompoent()
 
-    this._data = {
-      method: 'plus',
-      fValue: '',
-      sValue: ''
-    }
-    
-    // this._data = this.defineData()
+    // this._data = {
+    //   method: 'plus',
+    //   fValue: '',
+    //   sValue: ''
+    // }
+
+    this._data = this.defineData()
 
     this.selectedBtnIndex = 0
   }
