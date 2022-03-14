@@ -23,9 +23,32 @@ class Caculator{
     //   sValue: ''
     // }
 
-    this._data = this.defineData()
+    // this._data = this.defineData()
+
+    this._data = this.defineProxyData()
+
 
     this.selectedBtnIndex = 0
+  }
+
+  defineProxyData() {
+    let obj = {
+      method: 'plus',
+      fValue: '',
+      sValue: ''
+    }
+    const that =this
+    return new Proxy(obj, {
+      get(obj, prop) {
+        return obj[prop]
+      },
+      set(obj, prop, value) {
+        obj[prop] = value
+        that.setResult(that._data.method, that._data.fValue, that._data.sValue)
+        return true
+      }
+    })
+
   }
 
   defineData() {

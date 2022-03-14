@@ -1,4 +1,4 @@
-# JS实现简单计算器的功能的进化
+# JS 实现简单计算器的功能的进化
 
 ## 第一版实现的功能
 
@@ -10,20 +10,19 @@
     将输入框、计算方式按钮和结果显示三个视图分别拆分为组件并引入到页面中并显示出来。
 
 任务分解：
-1. 组件拆分：输入框组件、按钮组组件、结果显示组件分别放在components目录下；
-   1. 组件由3个文件组成：js、scss、tpl。
-      tpl文件：文件内容主要是由html标签组成
-      scss文件：样式提供给tpl文件
-      js文件：引入tpl和scss文件；tpl文件由webpack的ejs-loader转换成字符串形式的html文件并返回tpl函数。
-    2. 创建上面的3个组件类，并导出。
-        - 使用class创建类，构造函数里面设置name属性并赋值为类名。
-        - 创建tpl方法，主要是将tpl文件插入到html中。
+1. 组件拆分：输入框组件、按钮组组件、结果显示组件分别放在 components 目录下；
+   1. 组件由 3 个文件组成：js、scss、tpl。
+      tpl 文件：文件内容主要是由 html 标签组成
+      scss 文件：样式提供给 tpl 文件
+      js 文件：引入 tpl 和 scss 文件；tpl 文件由 webpack 的 ejs-loader 转换成字符串形式的 html 文件并返回 tpl 函数。
+    2. 创建上面的 3 个组件类，并导出。
+        - 使用 class 创建类，构造函数里面设置 name 属性并赋值为类名。
+        - 创建 tpl 方法，主要是将 tpl 文件插入到 html 中。
     3. 引入组件，并实例化组件
     4. 渲染组件
         - 使用 document.createDocumentFragment() 
-        - oFlag.appendChild() 方法将实例化组件调用tpl()返回的html文本插入到flag中
+        - oFlag.appendChild() 方法将实例化组件调用 tpl() 返回的 html 文本插入到 flag 中
         - 最终插入到 el 元素中
-   
    
   需求：
    在输入框输入数字后，根据选中的计算按钮类型就能够计算出结果。
@@ -31,17 +30,20 @@
   任务分解：
      1. 监听输入框输入的值，并赋值给某个变量。如何实现输入的监听方法？
         如何判断是那个输入框输入的值？
-     2. 给第一个按钮设置默认的选中效果；通过CSS 的样式就能实现
+     2. 给第一个按钮设置默认的选中效果；通过 CSS 的样式就能实现
      3. 点击按钮的时候，给按钮设置选中的效果
         1. 点击按钮；触发事件；返回事件对象：事件对象里面包含有点击标签的样式等信息
         2. 设置旧按钮的样式为默认样式 btn
-        3. 获取选择按钮的下标：通过 [].indexOf.call()获取下标
+        3. 获取选择按钮的下标：通过 [].indexOf.call() 获取下标
         4. 设置新下标的按钮背景样式。
    
 ## 第四版实现的功能 
-### 使用Object.defineProperty实现响应式更新
+### 使用 Object.defineProperty 实现响应式更新
 
 步骤：
-1. 切换version4的分支里面修改：git checkout -b version3 
-2. 使用Object.defineProperties()定义对象的多个属性，在给this._data对象属性：method、fValue、sValue赋值的时候进行了计算结果的操作
+1. 切换 version4 的分支里面修改：git checkout -b version3 
+2. 使用 Object.defineProperties() 定义对象的多个属性，在给 this._data 对象属性：method、fValue、sValue 赋值的时候进行了计算结果的操作
 
+## 第五版实现的共
+功能；
+使用 Proxy 实现了响应式更新
