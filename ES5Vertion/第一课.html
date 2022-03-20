@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>计算器</title>
+</head>
+<body>
+  学习：业务提升
+  1. 事件绑定
+  2. 工具类和计算函数使用立即执行函数封装
+  3. getAttribute()方法
+  4. 正则表达式：/s+ 表示一个或多个空白字符的使用
+    <div class="calculator J_calculator">
+      <p>结果：<span class="result"></span></p>
+      <div class="input-group">
+        <input type="text" value="">
+        <input type="text" value="">
+      </div>
+      <div class="btn-group">
+        <button  data-method="plus">+</button>
+        <button  data-method="minus">-</button>
+        <button  data-method="mul">*</button>
+        <button  data-method="div">/</button>
+      </div>
+
+    </div>
+
+    <script src="./compute.js" type="text/javascript"></script>
+    <script src="./tools.js"></script>
+    <script>
+      ((function(doc) {
+        var fInput = doc.getElementsByTagName("input")[0],
+          sInput = doc.getElementsByTagName("input")[1],
+          oResult = doc.getElementsByClassName('result')[0],
+          oBtnGroup = doc.getElementsByClassName('btn-group')[0];
+
+          const init = function() {
+            bindEvent()
+          }
+
+          function bindEvent() {
+            oBtnGroup.addEventListener('click', onClickEvent, false)
+          }
+
+          function onClickEvent(event) {
+            let tar = event.target
+            let tagName = tar.tagName.toLowerCase()
+            if(tagName === 'button') {
+              let method = tar.getAttribute('data-method')
+              let fValue = tools.digitalize(fInput.value)
+              let sValue = tools.digitalize(sInput.value)
+
+              let result = compute[method](fValue, sValue)
+              renderResult(result)
+            }
+          }
+          // oBtnGroup.addEventListener('click', function(event) {
+          //     console.log(`event：`,event.target);
+          //     tar = event.target
+          //     tagName = tar.tagName.toLowerCase();
+          //     console.log(`tagName：`,tagName);
+          //     if(tagName === 'button') {
+          //       var method = tar.getAttribute('data-method');
+          //       var fValue = tools.digitalize(fInput.value)
+          //       var sValue = tools.digitalize(sInput.value) 
+          //       let result = compute[method](fValue, sValue)
+          //       console.log(`result：`,result, fValue, sValue);
+          //       renderResult(result);
+          //     }
+          //   }, false)
+          
+            function renderResult(value) {
+              oResult.innerHTML = value
+            }
+
+          // function init() {
+          //   bindEvent()
+          // }
+
+          // function bindEvent() {
+          //   oBtnGroup.addEventListener('click', function(event) {
+          //     console.log(`event：`,event.target);
+          //   }, false)
+          // }
+
+          init()
+
+      })(document))
+
+    </script>
+</body>
+</html>
